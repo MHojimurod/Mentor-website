@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .services import *
 from .models import *
-from .forms import *
+from dashboard.forms import *
 
 
 def home(request):
@@ -106,7 +106,6 @@ def events(request):
 
 def contact(request):
     a = request.GET
-    print(a)
     model = Newsletter()
     form = NewsForm(request.POST, instance=model)
     model_1 = User()

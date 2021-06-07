@@ -5,12 +5,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Trainers List</h1>
+        <h1>Product List</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
-          <li class="breadcrumb-item active">Trainers List</li>
+          <li class="breadcrumb-item active">Product List</li>
         </ol>
       </div>
     </div>
@@ -22,48 +22,42 @@
             <div class="col-md-12">
             <div class="card card-primary">
 
-              <form method="post"  enctype="multipart/form-data">
+              <form method="post" enctype="multipart/form-data">
                   {% csrf_token %}
                 <div class="card-body">
                   <div class="form-group">
-                    <label >Full name</label>
-                      {{form.full_name}}
+                    <label >Product title</label>
+                      {{form.title}}
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="form-group">
-                    <label >Description</label>
+                    <label >Product description</label>
                       {{form.description}}
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="form-group">
-                    <label >Image</label>
+                    <label >Product price</label>
+                      {{form.price}}
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Product image</label>
                       {{form.image}}
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="form-group">
-                    <label >instagram</label>
-                      {{form.instagram}}
+                    <label >Product category_id</label>
+                      {{form.category}}
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="form-group">
-                    <label >Telegram</label>
-                      {{form.telegram}}
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="form-group">
-                    <label >Facebook</label>
-                      {{form.facebook}}
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="form-group">
-                    <label >Faculty</label>
-                      {{form.faculty}}
+                    <label >Product foods</label>
+                      {{form.foods}}
                   </div>
                 </div>
                 <div class="card-footer">

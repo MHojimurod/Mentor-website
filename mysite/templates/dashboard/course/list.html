@@ -5,12 +5,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Category List</h1>
+        <h1>Product List</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
-          <li class="breadcrumb-item active">Trainers List</li>
+          <li class="breadcrumb-item active">Product List</li>
         </ol>
       </div>
     </div>
@@ -25,7 +25,7 @@
                 <h3 class="card-title">Responsive Hover Table</h3>
 
                 <div class="card-tools">
-                    <a href="{% url 'trainer_add' %}"><div class="btn btn-block btn-success">Add</div></a>
+                    <a href="{% url 'product_add' %}"><div class="btn btn-block btn-success">Add</div></a>
                 </div>
               </div>
 
@@ -34,20 +34,26 @@
                   <thead>
                     <tr>
                       <th>№</th>
-                      <th>Full Name</th>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Price</th>
+                      <th>Category</th>
                       <th>Created_at</th>
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {% for i in trainers %}
+                    {% for prod in products %}
                     <tr>
                       <td>{{ forloop.counter }}</td>
-                      <td>{{ i.full_name }}</td>
-                      <td>{{ i.created_at }}</td>
-                      <td><a href="{% url 'trainer_edit' pk=i.id %}"><div class="btn btn-block btn-primary">Edit</div></a></td>
-                      <td><a href="{% url 'trainer_delete' pk=i.id %}"><div class="btn btn-block btn-danger">Delete</div></a></td>
+                      <td>{{ prod.title }}</td>
+                      <td>{{ prod.description }}</td>
+                      <td>{{ prod.price }}</td>
+                      <td>{{ prod.category_id }}</td>
+                      <td>{{ prod.created_at }}</td>
+                      <td><a href="{% url 'product_edit' pk=prod.id %}"><div class="btn btn-block btn-primary">Edit</div></a></td>
+                      <td><a href="{% url 'product_delete' pk=prod.id %}"><div class="btn btn-block btn-danger">Delete</div></a></td>
                     </tr>
                     {% endfor %}
                   </tbody>
