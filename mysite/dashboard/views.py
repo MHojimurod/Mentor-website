@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from mentor.models import Trainers
-from .forms import TrainerForm
+from mentor.models import Trainers,Events,Faculty,Course,User
+from .forms import TrainerForm,EventsForm,FacultyForm,CourseForm
+import datetime
 
 def login_required_decorator(f):
     return login_required(f, login_url="login")
@@ -29,7 +30,8 @@ def dashboard_logout(request):
 def trainers_list(request):
     trainers = Trainers.objects.all()
     ctx = {
-        'trainers':trainers
+        'trainers':trainers,
+        "t_active": 'active'
     }
     return render(request,'dashboard/trainers/list.html',ctx)
 def trainer_create(request):
@@ -64,10 +66,132 @@ def trainer_delete(request, pk):
 
 
 def events_list(request):
-    return render(request,'dashboard/events/list.html')
+    events = Events.objects.all()
+    ctx ={
+        'events':events,
+        "e_active": 'active'
+    }
+    return render(request,'dashboard/events/list.html',ctx)
+def events_create(request):
+    model = Events()
+    form = EventsForm(request.POST,request.FILES, instance=model)
+    if request.POST:
+        print(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('events_list')
+        else:
+            print(form.errors)
+    ctx = {
+        "form": form
+    }
+    return render(request, 'dashboard/events/form.html', ctx)
+def events_edit(request, pk):
+    model = Events.objects.get(id=pk)
+    form = EventsForm(request.POST or None, instance=model)
+    if request.POST:
+        if form.is_valid():
+            form.save()
+            return redirect('events_list')
+    ctx = {
+        "form": form
+    }
+    return render(request, 'dashboard/events/form.html', ctx)
+def events_delete(request, pk):
+    model = Events.objects.get(id=pk)
+    model.delete()
+    return redirect('events_list')
+
 
 def faculty_list(request):
-    return render(request,'dashboard/faculties/list.html')
+    faculty = Faculty.objects.all()
+    ctx = {
+        'faculty':faculty,
+        "f_active": 'active'
+    }
+    return render(request,'dashboard/faculty/list.html',ctx)
+def faculty_create(request):
+    model = Faculty()
+    form = FacultyForm(request.POST,request.FILES, instance=model)
+    if request.POST:
+        print(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('faculty_list')
+        else:
+            print(form.errors)
+    ctx = {
+        "form": form
+    }
+    return render(request, 'dashboard/faculty/form.html', ctx)
+def faculty_edit(request, pk):
+    model = Faculty.objects.get(id=pk)
+    form = FacultyForm(request.POST or None, instance=model)
+    if request.POST:
+        if form.is_valid():
+            form.save()
+            return redirect('faculty_list')
+    ctx = {
+        "form": form
+    }
+    return render(request, 'dashboard/faculty/form.html', ctx)
+def faculty_delete(request, pk):
+    model = Faculty.objects.get(id=pk)
+    model.delete()
+    return redirect('faculty_list')
 
 def course_list(request):
-    return render(request,'dashboard/course/list.html')
+    course = Course.objects.all()
+    print(course)
+    ctx = {
+        'course':course,
+        "c_active": 'active'
+    }
+    return render(request,'dashboard/course/list.html',ctx)
+def course_create(request):
+    model = Course()
+    form = CourseForm(request.POST,request.FILES, instance=model)
+    if request.POST:
+        print(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('course_list')
+        else:
+            print(form.errors)
+    ctx = {
+        "form": form
+    }
+    return render(request, 'dashboard/course/form.html', ctx)
+def course_edit(request, pk):
+    model = Course.objects.get(id=pk)
+    form = CourseForm(request.POST or None, instance=model)
+    if request.POST:
+        if form.is_valid():
+            form.save()
+            return redirect('course_list')
+    ctx = {
+        "form": form
+    }
+    return render(request, 'dashboard/course/form.html', ctx)
+def course_delete(request, pk):
+    model = Course.objects.get(id=pk)
+    model.delete()
+    return redirect('course_list')
+
+def users_list(request):
+    users = User.objects.all()
+    now = datetime.datetime.now()
+    ctx = {
+        'users':users,
+        'now':now
+    }
+    return render(request,'dashboard/user_messages/message.html',ctx)
+
+def read(request,pk):
+    user = User.objects.filter(pk=pk)
+    print('a',user)
+    ctx = {
+    'user': user
+    }
+    return render(request,'dashboard/user_messages/read.html',ctx)
+

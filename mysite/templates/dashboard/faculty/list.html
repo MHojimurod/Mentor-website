@@ -5,12 +5,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Events List</h1>
+        <h1>Faculty List</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
-          <li class="breadcrumb-item active">Events List</li>
+          <li class="breadcrumb-item active">Faculty List</li>
         </ol>
       </div>
     </div>
@@ -25,7 +25,7 @@
                 <h3 class="card-title">Responsive Hover Table</h3>
 
                 <div class="card-tools">
-                    <a href="{% url 'event_add' %}"><div class="btn btn-block btn-outline-success">Add</div></a>
+                    <a href="{% url 'faculty_add' %}"><div class="btn btn-block btn-outline-success">Add</div></a>
                 </div>
               </div>
 
@@ -34,20 +34,20 @@
                   <thead>
                     <tr>
                       <th>№</th>
-                      <th>Title</th>
+                      <th>Name</th>
                       <th>Created_at</th>
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {% for i in events %}
+                    {% for i in faculty %}
                     <tr>
                       <td>{{ forloop.counter }}</td>
-                      <td>{{ i.title }}</td>
+                      <td>{{ i.name }}</td>
                       <td>{{ i.created_at }}</td>
-                      <td><a href="{% url 'event_edit' pk=i.id %}"><div class="btn btn-block btn-outline-warning">Edit</div></a></td>
-                      <td><a href="{% url 'event_delete' pk=i.id %}"><div class="btn btn-block btn-outline-danger">Delete</div></a></td>
+                      <td><a href="{% url 'faculty_edit' pk=i.id %}"><div class="btn btn-block btn-outline-warning">Edit</div></a></td>
+                      <td><a href="{% url 'faculty_delete' pk=i.id %}"><div class="btn btn-block btn-outline-danger">Delete</div></a></td>
                     </tr>
                     {% endfor %}
                   </tbody>

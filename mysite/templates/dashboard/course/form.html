@@ -26,38 +26,50 @@
                   {% csrf_token %}
                 <div class="card-body">
                   <div class="form-group">
-                    <label >Product title</label>
+                    <label >Course title</label>
                       {{form.title}}
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="form-group">
-                    <label >Product description</label>
-                      {{form.description}}
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="form-group">
-                    <label >Product price</label>
+                    <label >Course price</label>
                       {{form.price}}
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="form-group">
-                    <label >Product image</label>
+                    <label >Course image</label>
                       {{form.image}}
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="form-group">
-                    <label >Product category_id</label>
-                      {{form.category}}
+                    <label >Course description</label>
+                      {{form.description}}
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="form-group">
-                    <label >Product foods</label>
-                      {{form.foods}}
+                    <label >Course schedule</label>
+                      {{form.schedule}}
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Available seats</label>
+                      {{form.seates}}
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Faculty </label>
+                      {{form.faculty}}
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Trainer </label>
+                      {{form.trainer}}
                   </div>
                 </div>
                 <div class="card-footer">

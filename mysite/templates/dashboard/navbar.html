@@ -6,7 +6,7 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+      <a href="{% url 'dashboard' %}" class="nav-link {{d_active}}">Dashboard</a>
     </li>
   </ul>
 </nav>
@@ -28,32 +28,37 @@
         <a href="" class="d-block">{{ user.username }}</a>
       </div>
     </div>
-
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
          </li>
          <li class="nav-item">
-          <a href="{% url 'faculty_list' %}" class="nav-link">
+          <a href="{% url 'faculty_list' %}" class="nav-link {{f_active}}">
             <i class="nav-icon far fa-image"></i>
             <p>Faculty</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{% url 'trainer_list' %}" class="nav-link">
+          <a href="{% url 'trainer_list' %}" class="nav-link {{t_active}}">
             <i class="nav-icon far fa-image"></i>
             <p>Trainers</p>
           </a>
         </li>
          <li class="nav-item">
-          <a href="{% url 'events_list' %}" class="nav-link">
+          <a href="{% url 'events_list' %}" class="nav-link {{e_active}}">
             <i class="nav-icon far fa-image"></i>
             <p>Events</p>
           </a>
         </li>
          <li class="nav-item">
-          <a href="{% url 'course_list' %}" class="nav-link">
+          <a href="{% url 'course_list' %}" class="nav-link {{c_active}}">
             <i class="nav-icon far fa-image"></i>
             <p>Course</p>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a href="{% url 'users_list' %}" class="nav-link {{c_active}}">
+            <i class="nav-icon far fa-image"></i>
+            <p>Users</p>
           </a>
         </li>
 

@@ -396,7 +396,15 @@ h6, .h6 {
   font-size: 1.25rem;
   font-weight: 300;
 }
-
+.hide-div{
+    position:absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    margin:auto;
+    display:none;
+    }
 .display-1 {
   font-size: 6rem;
   font-weight: 300;
