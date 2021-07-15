@@ -1,12 +1,15 @@
 from django.shortcuts import render,redirect
 from .services import *
-from .models import *
+from mentor.models import Trainers,Newsletter
+
 from dashboard.forms import *
 
 
 def home(request):
     course = get_course()
-    trainers = get_trainers()
+    # trainers = get_trainers()
+    trainers = Trainers.objects.order_by('-created_at')[:2]
+    print(trainers)
     model = Newsletter()
     form = NewsForm(request.POST, instance=model)
     count_trainers = get_trainers_count()
